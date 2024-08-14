@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './main.css';
 import { assets } from '../../assets/assets';
 import { Context } from '../../context/Context';
+import AiwithImage from '../../context/image'
 
 const Main = () => {
   const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   // Function to handle card clicks
   const handleCardClick = (prompt) => {
@@ -12,11 +15,34 @@ const Main = () => {
     onSent(prompt); // Trigger the onSent function with the card's prompt
   };
 
+  // Function to toggle the dropdown menu
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  // Function to handle "Use ImageAI" click
+  const handleUseImageAI = () => {
+    setShowPopup(true); // Show the popup
+    setShowDropdown(false); // Close the dropdown
+  };
+
+  // Function to close the popup
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className='main'>
       <div className="nav">
         <p>Gemini</p>
-        <img src={assets.user_icon} alt="icon" />
+        <div className="user-icon-container" onClick={toggleDropdown}>
+          <img src={assets.user_icon} alt="icon" />
+          {showDropdown && (
+            <div className="dropdown-menu">
+              <button onClick={handleUseImageAI}>Use ImageAI</button>
+            </div>
+          )}
+        </div>
       </div>
       <div className="main-container">
         {!showResult ? (
@@ -66,12 +92,11 @@ const Main = () => {
 
         <div className="main-bottom">
           <div className="search-box">
-            <input  onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here' />
+            <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here' />
             <div>
-             
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              {input &&
+              {input && 
                 <img onClick={() => onSent(input)} src={assets.send_icon} alt="" />
               }
             </div>
@@ -81,6 +106,15 @@ const Main = () => {
           </p>
         </div>
       </div>
+
+      {showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <span className="close-popup" onClick={closePopup}>&times;</span>
+            <AiwithImage /> {/* Include the AiwithImage component in the popup */}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

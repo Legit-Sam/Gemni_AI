@@ -9,7 +9,7 @@ const App = () => {
     
     <Sidebar />
     <Main />
-    <AiwithImage />
+    {/* <AiwithImage /> */}
     </>
   )
 }
