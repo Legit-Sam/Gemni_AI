@@ -3,6 +3,7 @@ import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn, UserButton } from
 import Sidebar from './components/Sidebar/page';
 import Main from './components/Main/Main';
 import AiwithImage from './context/image';
+import './components/Main/main.css'
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -15,7 +16,7 @@ const App = () => {
           <div className="main-container">
             <div className="nav">
        
-              <UserButton />
+              <UserButton  />
             </div>
             <Main />
           </div>

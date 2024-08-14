@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import './main.css';
 import { assets } from '../../assets/assets';
 import { Context } from '../../context/Context';
-import AiwithImage from '../../context/image'
+import AiwithImage from '../../context/image';
+import { useUser } from '@clerk/clerk-react'; // Import Clerk's useUser hook
 
 const Main = () => {
   const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
+  const { user } = useUser(); // Get the logged-in user's data from Clerk
   const [showDropdown, setShowDropdown] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -48,8 +50,8 @@ const Main = () => {
         {!showResult ? (
           <>
             <div className="greet">
-              <p><span>Hello, Dev.</span></p>
-              <p>How can I help you today</p>
+              <p><span>Hello, {user?.username || 'Dev'}.</span></p>
+              <p>How can I help you today?</p>
             </div>
             <div className="cards">
               <div className="card" onClick={() => handleCardClick("Suggest beautiful places to see on an upcoming road trip")}>
@@ -94,8 +96,8 @@ const Main = () => {
           <div className="search-box">
             <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here' />
             <div>
-              <img src={assets.gallery_icon} alt="" />
-              <img src={assets.mic_icon} alt="" />
+              {/* <img src={assets.gallery_icon} alt="" />
+              <img src={assets.mic_icon} alt="" /> */}
               {input && 
                 <img onClick={() => onSent(input)} src={assets.send_icon} alt="" />
               }
