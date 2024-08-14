@@ -130,13 +130,14 @@
   
   .dropdown-menu {
     position: absolute;
-    top: 40px;
+    top: 45px;
     right: 0;
     background-color: #333;
     color: white;
     padding: 10px;
     border-radius: 5px;
     z-index: 1;
+    width: 300%;
   }
   
   .dropdown-menu button {
@@ -146,6 +147,7 @@
     padding: 10px;
     cursor: pointer;
     text-align: left;
+   
   }
   
   .dropdown-menu button:hover {
