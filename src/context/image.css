@@ -1,0 +1,113 @@
+/* image.css */
+
+/* Container for the main content */
+.choose {
+    display: flex;
+    flex-direction: column; /* Stack vertically on smaller screens */
+    align-items: center;
+    width: 100%;
+    
+  
+
+}
+input{
+    background: black;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.container{
+    background-color: black;
+    width: 45%;
+}
+/* File input and button */
+.choose input[type="file"] {
+    width: 100%;
+    margin-bottom: 15px; /* Add some space below the input */
+}
+
+.choose button {
+    margin-left: 0;
+    width: 100%; /* Full width on smaller screens */
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.choose button:hover {
+    background-color: #0056b3;
+}
+
+.response{
+    color: white;
+    position: relative;
+    width: 99%;
+    top: 200px;
+    left: 2px;
+    
+  
+
+}
+
+.loadings {
+    color: white;
+    position: relative;
+    top: 200px;
+    
+}
+/* Image styling */
+img {
+    width: 120%;
+    max-width: 300px; /* Ensure the image doesn't get too large */
+    height: auto;
+    margin-top: 30px;
+    align-items: center;
+    
+ 
+    
+}
+
+.upload{
+   
+   height: 21%;
+    position: absolute;
+    right: 20px;
+ 
+    
+    
+}
+/* Loading and AI response text */
+p {
+    margin: 30px 0;
+    font-size: 14px;
+    
+   
+   
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+    .choose {
+        flex-direction: row; /* Align horizontally on larger screens */
+        justify-content: space-between;
+    }
+
+    .choose button {
+        margin-left: 20px;
+        width: auto; /* Return to auto width on larger screens */
+    }
+
+    .container{
+    
+        width: 25%;
+    }
+
+    img {
+        max-width: 30%;
+    }
+}
