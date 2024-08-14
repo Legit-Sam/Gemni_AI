@@ -48,7 +48,7 @@
 .main .card {
     height: 200px;
     padding: 15px;
-    background-color: #f0f5f9;
+    background-color: transparent;
     border-radius: 10px;
     position: relative;
     cursor: pointer;
@@ -95,6 +95,7 @@
 .search-box img {
     width: 24px;
     cursor: pointer;
+    
 }
 
 .search-box input {

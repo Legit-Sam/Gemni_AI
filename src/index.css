@@ -6,12 +6,14 @@
   box-sizing: border-box;
   font-family: Outfit ;
 
+
 }
 
 #root{
   min-height: 100vh;
   display: flex;
   animation: fadeIn 1.5s;
+  background: black;
 }
 
 @keyframes fadeIn {
